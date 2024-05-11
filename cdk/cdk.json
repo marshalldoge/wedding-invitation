@@ -1,7 +1,6 @@
 {
   "app": "npx ts-node -P tsconfig.json --prefer-ts-exts bin/cdk.ts",
   "context": {
-    "aws-cdk:enableDiffNoFail": "true",
-    "@aws-cdk/aws-s3:grantWriteWithoutAcl": true
+    "aws-cdk:enableDiffNoFail": "true"
   }
 }
