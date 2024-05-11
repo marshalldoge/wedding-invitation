@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Deployment
 
 on:
   workflow_dispatch:
@@ -52,5 +52,5 @@ jobs:
           - npm ci
           - apt-get update && apt-get install -y awscli
           - aws --version
-          - cdk bootstrap aws://${{secrets.$AWS_ACCOUNT_ID}}/${{secrets.AWS_REGION}}
+          - cdk bootstrap aws://${{secrets.AWS_ACCOUNT_ID}}/${{secrets.AWS_REGION}}
           - cdk deploy wedding-invitation-cdk-stack --no-asset-metadata --require-approval never
