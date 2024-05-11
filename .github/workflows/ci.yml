@@ -1,0 +1,56 @@
+name: Continuous Integration
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
+
+jobs:
+  build:
+    name: "📦 Build Application"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "☁️ checkout repository"
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: "🔧 setup node"
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: "🔧 install npm@latest"
+        run: npm ci
+
+      - name: "📦 install dependencies"
+        uses: bahmutov/npm-install@v1
+
+      - name: "🔧 build application"
+        run: npm run build
+        env:
+          PANAMA_HOST: https://${{inputs.environment}}.summiko.com/api
+
+      - name: "Cdk stack deploy"
+        run: |
+          - npm install aws-cdk -g
+          - cd cdk
+          - npm ci
+          - apt-get update && apt-get install -y awscli
+          - aws --version
+          - cdk bootstrap aws://${{secrets.$AWS_ACCOUNT_ID}}/${{secrets.AWS_REGION}}
+          - cdk deploy wedding-invitation-cdk-stack --no-asset-metadata --require-approval never
