@@ -17,7 +17,6 @@ export class CdkStack extends Stack {
     super(scope, id);
 
     const weddingInvitationS3Bucket = new s3.Bucket(this, `wedding-invitation-s3`, {
-      bucketName: `wedding-invitation`,
       objectOwnership: s3.ObjectOwnership.BUCKET_OWNER_PREFERRED,
       blockPublicAccess: {
         blockPublicAcls: false,
