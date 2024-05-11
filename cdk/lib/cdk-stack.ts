@@ -41,7 +41,7 @@ export class CdkStack extends Stack {
     });
 
     new s3Deploy.BucketDeployment(this, 'DeployWithInvalidation', {
-      sources: [s3Deploy.Source.asset('../../dist')],
+      sources: [s3Deploy.Source.asset('../dist')],
       destinationBucket: weddingInvitationS3Bucket,
       distribution: weddingInvitationCDN,
       distributionPaths: ['/*'],

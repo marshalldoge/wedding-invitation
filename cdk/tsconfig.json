@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "outDir": "dist",
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "checkJs": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "types": [
+      "jest",
+      "node"
+    ],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowUnreachableCode": true,
+    "resolveJsonModule": true,
+    "declarationMap": true,
+    "useUnknownInCatchVariables": false
+  },
+  "include": [
+    "**/*.ts"],
+  "exclude": [
+    "node_modules",
+  ]
+}
