@@ -1,14 +1,16 @@
 /* eslint-disable max-lines */
 import {
-  aws_s3 as s3, RemovalPolicy,
   aws_cloudfront as cloudfront,
-  Stack,
+  aws_s3 as s3,
   aws_s3_deployment as s3Deploy,
+  RemovalPolicy,
+  Stack,
 } from 'aws-cdk-lib';
 
 import { Construct } from 'constructs';
 import { S3Origin } from 'aws-cdk-lib/aws-cloudfront-origins';
 import { AllowedMethods, CachedMethods, ViewerProtocolPolicy } from 'aws-cdk-lib/aws-cloudfront';
+import { BucketAccessControl } from 'aws-cdk-lib/aws-s3';
 
 // eslint-disable-next-line import/prefer-default-export
 export class CdkStack extends Stack {
@@ -44,6 +46,7 @@ export class CdkStack extends Stack {
       destinationBucket: weddingInvitationS3Bucket,
       distribution: weddingInvitationCDN,
       distributionPaths: ['/*'],
+      accessControl: BucketAccessControl.PUBLIC_READ
     });
   }
 }
