@@ -1,12 +1,10 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from 'next';
+import './globals.css';
+import notoSansJP from '@/app/fonts';
 
 export const metadata: Metadata = {
-  title: "Boda Max y Carla",
-  description: "Boda Max y Carla 21-Sept-2024",
+  title: 'Boda Max y Carla',
+  description: 'Boda Max y Carla 21-Sept-2024',
 };
 
 export default function RootLayout({
@@ -16,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={inter.className}>{children}</body>
+      <body className={notoSansJP.className}>{children}</body>
     </html>
   );
 }

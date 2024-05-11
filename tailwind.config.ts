@@ -1,20 +1,20 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     fontSize: {
-      h1: '40px',
-      h2: '32px',
-      h3: '1.17rem',
-      h4: '1rem',
-      h5: '0.83rem',
-      h6: '0.67rem',
-      p: '16px',
+      h1: '4rem',
+      h2: '2.4rem',
+      h3: '2rem',
+      h4: '1.8rem',
+      h5: '1.4rem',
+      h6: '1.2rem',
+      p: '1rem',
       small: '14px',
       tiny: '10px',
     },
@@ -34,10 +34,13 @@ const config: Config = {
       p: '22px',
     },
     extend: {
+      fontFamily: {
+        noto: ['var(--noto-serif)'],
+      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
         neutral: {

@@ -1,12 +1,13 @@
+import { ReactElement } from 'react';
+
 type titleProps = {
-  title: string;
   color?: string;
+  children: ReactElement;
 };
-const Title = ({ title, color = 'text-h1' }: titleProps) => {
-  if (!title || title.length === 0) return null;
+const Title = ({ color = 'text-h1', children }: titleProps) => {
   return (
-    <div className={`pb-10 ${color}`}>
-      <h1>{title}</h1>
+    <div className={`pb-10 ${color} font-noto`}>
+      {children}
     </div>
   );
 };
