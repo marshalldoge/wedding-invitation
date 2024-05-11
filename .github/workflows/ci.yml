@@ -47,10 +47,10 @@ jobs:
 
       - name: "Cdk stack deploy"
         run: |
-          - npm install aws-cdk -g
-          - cd cdk
-          - npm ci
-          - apt-get update && apt-get install -y awscli
-          - aws --version
-          - cdk bootstrap aws://${{secrets.AWS_ACCOUNT_ID}}/${{secrets.AWS_REGION}}
-          - cdk deploy wedding-invitation-cdk-stack --no-asset-metadata --require-approval never
+          npm install aws-cdk -g
+          cd cdk
+          npm ci
+          apt-get update && apt-get install -y awscli
+          aws --version
+          cdk bootstrap aws://${{secrets.AWS_ACCOUNT_ID}}/${{secrets.AWS_REGION}}
+          cdk deploy wedding-invitation-cdk-stack --no-asset-metadata --require-approval never
