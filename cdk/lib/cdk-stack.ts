@@ -75,7 +75,9 @@ export class CdkStack extends Stack {
       },
     );
 
-    const apiKey = new apigateway.ApiKey(this, 'wedding-api-key');
+    const apiKey = new apigateway.ApiKey(this, 'wedding-api-key', {
+      apiKeyName: 'wedding-api-key'
+    });
 
     const usagePlan = weddingApiGateway.addUsagePlan('wedding-api-usage-plan', {});
     usagePlan.addApiStage({

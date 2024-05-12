@@ -12,10 +12,18 @@ export default class GuestHandler {
 
   async findGuests(input) {
     console.log('Find guests', input);
+    return [
+      {
+        id: '123456',
+        name: 'Michi',
+        table: 'FIRE',
+      }
+    ];
   }
 
   async updateGuest(guest: any) {
     console.log('Update guest', guest);
+    return [1];
   }
 
   async handle() {

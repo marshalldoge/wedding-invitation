@@ -4,6 +4,7 @@ import Title from '@/components/common/Title';
 import Invitation from '@/components/Invitation/Invitation';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Confirm from '@/components/confirm/Confirm';
 
 interface Guest {
   id: string;
@@ -56,6 +57,7 @@ export default function Home() {
           nisi in dui elementum congue vel nec lorem. Aenean ut ipsum vitae metus lobortis semper a cursus erat. Donec
           hendrerit p</p>
       </Invitation> : <h3>Loading...</h3>}
+      <Confirm/>
     </main>
   );
 }
