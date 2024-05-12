@@ -1,6 +1,6 @@
 import { AdvancedMarker, APIProvider, Map as GoogleMap } from '@vis.gl/react-google-maps';
 const Map = () => (
-  <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string}>
+  <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY as string}>
     <GoogleMap
       className={'w-[100vw] h-[300px] md:w-[600px] md:h-[400px]'}
       defaultCenter={{ lat: -16.55246508695984, lng: -68.0659536163635 }}

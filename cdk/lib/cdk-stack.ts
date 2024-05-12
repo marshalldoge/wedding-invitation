@@ -145,6 +145,5 @@ export class CdkStack extends Stack {
         },
       }],
     });
-    ap;
   }
 }
