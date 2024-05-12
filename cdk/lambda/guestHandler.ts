@@ -38,7 +38,7 @@ export default class GuestHandler {
 
   async createGuest(guest: any) {
     const params = new PutCommand({
-      TableName: process.env.CognitoConcurrentDevicesTable,
+      TableName: process.env.GUEST_DYNAMO_DB_TABLE_NAME,
       Item: guest,
     });
     try {
@@ -50,7 +50,7 @@ export default class GuestHandler {
 
   async updateGuest(guest: any) {
     const params = new PutCommand({
-      TableName: process.env.CognitoConcurrentDevicesTable,
+      TableName: process.env.GUEST_DYNAMO_DB_TABLE_NAME,
       Item: guest,
     });
     try {
