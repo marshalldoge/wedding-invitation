@@ -1,4 +1,6 @@
 import { APIGatewayEvent } from 'aws-lambda';
+const AWS = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient();
 import { internalCorsServerError, validCorsRequest } from './responses';
 
 export default class GuestHandler {
@@ -11,14 +13,32 @@ export default class GuestHandler {
   }
 
   async findGuests(input) {
-    console.log('Find guests', input);
-    return [
-      {
-        id: '123456',
-        name: 'Michi',
-        table: 'FIRE',
-      }
-    ];
+    const params = {
+      TableName: process.env.GUEST_DYNAMO_DB_TABLE_NAME,
+    } as any;
+
+    const scanResults = [] as any[];
+    let items;
+    do{
+      items = await docClient.scan(params).promise();
+      items.Items.forEach((item) => scanResults.push(item));
+      params.ExclusiveStartKey = items.LastEvaluatedKey;
+    }while(typeof items.LastEvaluatedKey !== 'undefined');
+
+    return scanResults;
+  }
+
+  async createGuest(guest: any) {
+    try {
+      const params = {
+        TableName : process.env.GUEST_DYNAMO_DB_TABLE_NAME,
+        Item: guest
+      };
+      await docClient.put(params).promise();
+      return { body: 'Successfully created guest!' };
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 
   async updateGuest(guest: any) {
@@ -30,7 +50,7 @@ export default class GuestHandler {
     try {
       this.logger.debug({ message: 'Received event', event: this.event });
       let res = {} as any;
-      switch (this.event.resource) {
+      switch (this.event.path) {
         case '/guests/find': {
           const body = JSON.parse(this.event.body as string);
           res = await this.findGuests(body);
@@ -41,8 +61,13 @@ export default class GuestHandler {
           res = await this.updateGuest(body);
           break;
         }
+        case '/guests/create': {
+          const body = JSON.parse(this.event.body as string) as any;
+          res = await this.createGuest(body);
+          break;
+        }
         default: {
-          this.logger.debug(`Resource ${this.event.resource} not associated with any logic.`);
+          this.logger.debug(`Resource ${this.event.path} not associated with any logic.`);
         }
       }
       return validCorsRequest(res);
