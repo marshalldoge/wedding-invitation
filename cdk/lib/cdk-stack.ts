@@ -62,7 +62,7 @@ export class CdkStack extends Stack {
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
     });
 
-    const apiGateway = new apigateway.RestApi(
+    const weddingApiGateway = new apigateway.RestApi(
       this,
       `wedding-invitation-api`,
       {
@@ -74,6 +74,16 @@ export class CdkStack extends Stack {
         },
       },
     );
+
+    const apiKey = new apigateway.ApiKey(this, 'wedding-api-key');
+
+    const usagePlan = weddingApiGateway.addUsagePlan('wedding-api-usage-plan', {});
+    usagePlan.addApiStage({
+      api: weddingApiGateway,
+      stage: weddingApiGateway.deploymentStage,
+    });
+
+    usagePlan.addApiKey(apiKey);
 
     const lambdaRole = new iam.Role(this, 'assetTrackingApplicationRole', {
       roleName: `wedding-invitation-lambda-role`,
@@ -100,7 +110,7 @@ export class CdkStack extends Stack {
       principal: new iam.ServicePrincipal('apigateway.amazonaws.com'),
     });
 
-    const weddingBackendResource = apiGateway.root.addResource('guests');
+    const weddingBackendResource = weddingApiGateway.root.addResource('guests');
     const findGuestsResource = weddingBackendResource.addProxy({
       anyMethod: true,
       defaultIntegration: new apigateway.LambdaIntegration(lambdaFunction),
@@ -135,6 +145,6 @@ export class CdkStack extends Stack {
         },
       }],
     });
-  }
+    ap;
   }
 }
