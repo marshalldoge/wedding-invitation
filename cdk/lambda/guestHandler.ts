@@ -1,7 +1,13 @@
 import { APIGatewayEvent } from 'aws-lambda';
-const AWS = require('aws-sdk');
-const docClient = new AWS.DynamoDB.DocumentClient();
 import { internalCorsServerError, validCorsRequest } from './responses';
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import {
+  DynamoDBDocumentClient,
+  PutCommand,
+  ScanCommand,
+} from '@aws-sdk/lib-dynamodb';
+
+const docClient = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
 export default class GuestHandler {
   event: APIGatewayEvent;
@@ -15,12 +21,14 @@ export default class GuestHandler {
   async findGuests(input) {
     const params = {
       TableName: process.env.GUEST_DYNAMO_DB_TABLE_NAME,
+      Select: 'ALL_ATTRIBUTES',
     } as any;
 
     const scanResults = [] as any[];
     let items;
     do{
-      items = await docClient.scan(params).promise();
+      const command = new ScanCommand(params);
+      items = await docClient.send(command);
       items.Items.forEach((item) => scanResults.push(item));
       params.ExclusiveStartKey = items.LastEvaluatedKey;
     }while(typeof items.LastEvaluatedKey !== 'undefined');
@@ -29,21 +37,27 @@ export default class GuestHandler {
   }
 
   async createGuest(guest: any) {
+    const params = new PutCommand({
+      TableName: process.env.CognitoConcurrentDevicesTable,
+      Item: guest,
+    });
     try {
-      const params = {
-        TableName : process.env.GUEST_DYNAMO_DB_TABLE_NAME,
-        Item: guest
-      };
-      await docClient.put(params).promise();
-      return { body: 'Successfully created guest!' };
-    } catch (err) {
-      throw new Error(err);
+      return docClient.send(params);
+    } catch (error) {
+      this.logger.error('Error in inserting unique device id', { error });
     }
   }
 
   async updateGuest(guest: any) {
-    console.log('Update guest', guest);
-    return [1];
+    const params = new PutCommand({
+      TableName: process.env.CognitoConcurrentDevicesTable,
+      Item: guest,
+    });
+    try {
+      return docClient.send(params);
+    } catch (error) {
+      this.logger.error('Error in updating unique device id', { error });
+    }
   }
 
   async handle() {
