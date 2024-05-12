@@ -108,5 +108,33 @@ export class CdkStack extends Stack {
         apiKeyRequired: true,
       } });
 
+    const ALLOWED_HEADERS = ['Content-Type', 'X-Amz-Date', 'X-Amz-Security-Token', 'Authorization', 'X-Api-Key', 'X-Requested-With', 'Accept', 'Access-Control-Allow-Methods', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'];
+    findGuestsResource.addMethod('OPTIONS', new apigateway.MockIntegration({
+      integrationResponses: [{
+        statusCode: '200',
+        responseParameters: {
+          'method.response.header.Access-Control-Allow-Headers': `'${ALLOWED_HEADERS.join(',')}'`,
+          //'method.response.header.Access-Control-Allow-Origin': `'https://${cloudfront.distributionDomainName}'`,
+          'method.response.header.Access-Control-Allow-Origin': `'*'`,
+          'method.response.header.Access-Control-Allow-Credentials': "'false'",
+          'method.response.header.Access-Control-Allow-Methods': "'OPTIONS,GET,PUT,POST,DELETE'",
+        },
+      }],
+      passthroughBehavior: apigateway.PassthroughBehavior.NEVER,
+      requestTemplates: {
+        'application/json': '{"statusCode": 200}',
+      },
+    }), {
+      methodResponses: [{
+        statusCode: '200',
+        responseParameters: {
+          'method.response.header.Access-Control-Allow-Headers': true,
+          'method.response.header.Access-Control-Allow-Methods': true,
+          'method.response.header.Access-Control-Allow-Credentials': true,
+          'method.response.header.Access-Control-Allow-Origin': true,
+        },
+      }],
+    });
+  }
   }
 }
