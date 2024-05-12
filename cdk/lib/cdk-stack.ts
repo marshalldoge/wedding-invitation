@@ -95,6 +95,19 @@ export class CdkStack extends Stack {
       ],
     });
 
+    lambdaRole.addToPolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        'dynamodb:BatchGetItem',
+        'dynamodb:Scan',
+        'dynamodb:Query',
+        'dynamodb:GetItem',
+        'dynamodb:DeleteItem',
+        'dynamodb:PutItem',
+      ],
+      resources: [guestsDynamoTable.tableArn, guestsDynamoTable.tableArn],
+    }));
+
     const lambdaFunction = new NodejsFunction(this, `wedding-invitation-backend`, {
       runtime: lambda.Runtime.NODEJS_20_X,
       description: `Backend for wedding invitation`,
