@@ -1,14 +1,18 @@
+
 interface ConfirmButtonProps {
   text: string;
-  onClick?: (e:any) => void;
-  disabled?: boolean;
+  onClick?: (e: any) => void;
+  backgroundColor?: string;
 }
-const ConfirmButton = ({ text, onClick = () => {}, disabled = false } : ConfirmButtonProps) => (
-  <div className={'md:flex rounded-1 bg-pink-200 hover:bg-pink-300 hover:cursor-pointer'} onClick={onClick}>
-    <div className={'m-10'}>
-      <p>{text}</p>
+const ConfirmButton = ({ text, onClick = () => {}, backgroundColor = 'bg-pink-200' } : ConfirmButtonProps) => {
+
+  return (
+    <div className={`md:flex rounded-1 ${backgroundColor}`} onClick={onClick}>
+      <div className={'m-10'}>
+        <p>{text}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default ConfirmButton;

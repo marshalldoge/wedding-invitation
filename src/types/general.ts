@@ -3,5 +3,8 @@ export interface Guest {
   name?: string;
   table?: string;
   gender?: string;
-  confirmation?: string;
+  confirmation?: InvitationConfirmation;
+  locked?: boolean;
 }
+
+export type InvitationConfirmation = 'PENDING' | 'Y' | 'N';

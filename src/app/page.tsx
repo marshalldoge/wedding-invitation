@@ -6,6 +6,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Confirm from '@/components/confirm/Confirm';
 import { getGuest } from '@/api/guestApi';
+import FAQ from '@/components/faq/FAQ';
 
 interface Guest {
   id: string;
@@ -39,7 +40,10 @@ export default function Home() {
           <h1>Boda</h1>
         </Title>
         <Title color={'text-purple-100 pb-5'} >
-          <h2>Maximilian V. y Carla M.</h2>
+          <h2>Maximilian V.</h2>
+        </Title>
+        <Title color={'text-purple-100 pb-5'} >
+          <h2>Carla M.</h2>
         </Title>
       </Banner>
       {guest ? <Invitation>
@@ -59,7 +63,8 @@ export default function Home() {
           nisi in dui elementum congue vel nec lorem. Aenean ut ipsum vitae metus lobortis semper a cursus erat. Donec
           hendrerit p</p>
       </Invitation> : <h3>Loading...</h3>}
-      <Confirm guest={guest} reloadGuest={loadGuest}/>
+      <Confirm guest={guest} reloadGuest={loadGuest} setLocalGuest={setGuest}/>
+      <FAQ/>
     </main>
   );
 }

@@ -11,7 +11,7 @@ const Invitation = (props: strapiBanner) => {
       <div className={'md:basis-1/2 h-full'}>
         <div className={'flex-col h-full py-10 md:py-0'}>
           <div className={'flex flex-row justify-center items-center h-full'}>
-            <div className={'w-[80%] mb-5 sm:mb-0 font-noto'}>
+            <div className={'md:w-[80%] mb-5 sm:mb-0 font-noto px-5 md:px-10'}>
               {props.children}
             </div>
           </div>
@@ -26,8 +26,8 @@ const Invitation = (props: strapiBanner) => {
           </div>
         </div>
       </div>
-      <div className={'absolute bottom-[100%] left-[0%]'}>
-        <img src={'/sakuraBranch.svg'} alt={'sakura'} className={'w-[400px] h-[200px]'}/>
+      <div className={'absolute bottom-[0%] right-[0%]'}>
+        <img src={'/sakuraBranch.svg'} alt={'sakura'} className={'w-[200px] h-[200px]'}/>
       </div>
     </div>
   );
