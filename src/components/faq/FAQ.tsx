@@ -1,16 +1,17 @@
 import { Accordion } from 'flowbite-react';
+import Title from '@/components/common/Title';
 
 const FAQ = () => {
   return (
     <div className={'py-16'}>
       <div className={'flex justify-center items-center py-5'}>
-        <h3>Preguntas frecuentes</h3>
+        <Title><h3>Preguntas frecuentes</h3></Title>
       </div>
-      <div className={'px-5 md:px-10'}>
+      <div className={'relative px-5 md:px-10 z-30'}>
         <Accordion>
           <Accordion.Panel>
-            <Accordion.Title>¿Cómo llego al local?</Accordion.Title>
-            <Accordion.Content>
+            <Accordion.Title className={'bg-transparent'}>¿Cómo llego al local?</Accordion.Title>
+            <Accordion.Content className={'bg-neutral-100'}>
               <p className="mb-2 text-gray-500 dark:text-gray-400">
                 Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons,
                 dropdowns, modals, navbars, and more.

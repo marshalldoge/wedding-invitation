@@ -11,7 +11,7 @@ const Invitation = (props: strapiBanner) => {
       <div className={'md:basis-1/2 h-full'}>
         <div className={'flex-col h-full py-10 md:py-0'}>
           <div className={'flex flex-row justify-center items-center h-full'}>
-            <div className={'md:w-[80%] mb-5 sm:mb-0 font-noto px-5 md:px-10'}>
+            <div className={'md:w-[80%] mb-5 sm:mb-0 font-noto px-5 md:px-10 z-10'}>
               {props.children}
             </div>
           </div>
@@ -20,7 +20,7 @@ const Invitation = (props: strapiBanner) => {
       <div className={'md:basis-1/2 h-full'}>
         <div className={'flex-col h-full py-10 md:py-0'}>
           <div className={'flex flex-row justify-center items-center h-full'}>
-            <div className={'mb-5 sm:mb-0'}>
+            <div className={'mb-5 sm:mb-0 z-10'}>
               <Map/>
             </div>
           </div>

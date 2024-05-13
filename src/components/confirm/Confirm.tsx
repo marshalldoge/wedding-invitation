@@ -45,7 +45,7 @@ const Confirm = ({ guest, reloadGuest = () => Promise.resolve(), setLocalGuest =
           <Title><h3>Por favor confirma tu asistencia</h3></Title>
         </div>
       </div>
-      <div className={'md:flex h-auto md:h-[400px] bg-neutral-100 overflow-hidden z-10'}>
+      <div className={'md:flex h-auto md:h-[400px] bg-neutral-100 overflow-hidden'}>
         <div className={'md:basis-1/2'}>
           <div className={'flex-col py-10 md:py-0'}>
             <div className={'flex flex-row justify-center items-center h-full'}>
@@ -61,8 +61,8 @@ const Confirm = ({ guest, reloadGuest = () => Promise.resolve(), setLocalGuest =
           </div>
         </div>
       </div>
-      <div className={'absolute bottom-[50%] right-[50%] z-0'}>
-        <img src={'/sakuraBranch.svg'} alt={'sakura'} className={'w-[200px] h-[100px]'}/>
+      <div className={'absolute bottom-[0%] right-[0%] z-10'}>
+        <img src={'/sakuraBranch.svg'} alt={'sakura'} className={'w-[400px] h-[300px]'}/>
       </div>
     </div>
   );

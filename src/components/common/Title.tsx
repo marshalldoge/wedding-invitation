@@ -6,7 +6,7 @@ type titleProps = {
 };
 const Title = ({ color = 'text-h1', children }: titleProps) => {
   return (
-    <div className={`pb-10 ${color} font-noto`}>
+    <div className={`pb-10 ${color} font-noto z-20`}>
       {children}
     </div>
   );

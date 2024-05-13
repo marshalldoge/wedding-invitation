@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import Confirm from '@/components/confirm/Confirm';
 import { getGuest } from '@/api/guestApi';
 import FAQ from '@/components/faq/FAQ';
+import FlowerCanvas from '@/components/canvas/FlowerCanvas';
 
 interface Guest {
   id: string;
@@ -34,7 +35,7 @@ export default function Home() {
     loadGuest();
   }, []);
   return (
-    <main>
+    <main className={'relative'}>
       <Banner>
         <Title color={'text-purple-100 pb-5'} >
           <h1>Boda</h1>
@@ -65,6 +66,7 @@ export default function Home() {
       </Invitation> : <h3>Loading...</h3>}
       <Confirm guest={guest} reloadGuest={loadGuest} setLocalGuest={setGuest}/>
       <FAQ/>
+      <FlowerCanvas></FlowerCanvas>
     </main>
   );
 }
