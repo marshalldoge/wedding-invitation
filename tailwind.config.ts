@@ -9,17 +9,6 @@ const config: Config = {
     flowbite.content(),
   ],
   theme: {
-    fontSize: {
-      h1: '4rem',
-      h2: '2.4rem',
-      h3: '2rem',
-      h4: '1.8rem',
-      h5: '1.4rem',
-      h6: '1.2rem',
-      p: '1rem',
-      small: '14px',
-      tiny: '10px',
-    },
     fontWeight: {
       h1: '500',
       h2: '600',
@@ -36,8 +25,20 @@ const config: Config = {
       p: '22px',
     },
     extend: {
+      fontSize: {
+        h1: '4rem',
+        h2: '2.4rem',
+        h3: '2rem',
+        h4: '1.8rem',
+        h5: '1.4rem',
+        h6: '1.2rem',
+        p: '1rem',
+        small: '14px',
+        tiny: '10px',
+      },
       fontFamily: {
         noto: ['var(--noto-serif)'],
+        dancing: ['var(--dancing-script)'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -65,7 +66,13 @@ const config: Config = {
         },
         brown: {
           300: '#70371F'
-        }
+        },
+        green: {
+          100: 'rgb(213,255,214)'
+        },
+        red: {
+          100: '#f8c2c2'
+        },
       },
     },
   },

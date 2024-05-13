@@ -5,7 +5,7 @@ const FAQ = () => {
   return (
     <div className={'py-16'}>
       <div className={'flex justify-center items-center py-5'}>
-        <Title><h3>Preguntas frecuentes</h3></Title>
+        <Title><h2 className={'text-brown-300'}>Preguntas frecuentes</h2></Title>
       </div>
       <div className={'relative px-5 md:px-10 z-30'}>
         <Accordion className={'bg-neutral-100'}>

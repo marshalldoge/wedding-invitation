@@ -10,7 +10,7 @@ const Map = () => (
       mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID as string}
     >
       <AdvancedMarker position={{ lat: -16.55246508695984, lng: -68.0659536163635 }}>
-        <img src={'/LeDomeLogo.jpg'} className={'w-[40px] h-[40px]'}/>
+        <img src={'/CherryBlossomTree.png'} className={'w-[4rem] h-[4rem]'}/>
       </AdvancedMarker>
     </GoogleMap>
   </APIProvider>

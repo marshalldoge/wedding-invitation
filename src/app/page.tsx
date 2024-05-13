@@ -2,12 +2,12 @@
 import Banner from '@/components/banner/Banner';
 import Title from '@/components/common/Title';
 import Invitation from '@/components/Invitation/Invitation';
-import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Confirm from '@/components/confirm/Confirm';
 import { getGuest } from '@/api/guestApi';
 import FAQ from '@/components/faq/FAQ';
 import FlowerCanvas from '@/components/canvas/FlowerCanvas';
+import useSWR from 'swr';
 
 interface Guest {
   id: string;
@@ -16,39 +16,33 @@ interface Guest {
   gender: string;
 }
 
-const props = {
-  name: 'Michi',
-  table: 'Fire'
+const guestFetcher = async (id:string) => {
+  const guest = await getGuest({ id });
+  return guest;
 };
+
 export default function Home() {
   const searchParams = useSearchParams();
-  const [guest, setGuest] = useState(null as unknown as Guest);
+  const { data: guest, isLoading, mutate, isValidating } = useSWR(searchParams.get('id'), guestFetcher, {
+    fallback: [],
+    refreshInterval: 60000
+  });
 
-  const loadGuest = useCallback( async (): Promise<void> => {
-    const guestId = searchParams.get('id') as string;
-    getGuest({ id: guestId }).then((res) => {
-      setGuest(res);
-    });
-  }, [searchParams.get('id')]);
-
-  useEffect(() => {
-    loadGuest();
-  }, []);
   return (
     <main className={'relative'}>
       <Banner>
-        <Title color={'text-purple-100 pb-5'} >
-          <h1>Boda</h1>
+        <Title className={'text-6xl lg:text-9xl text-brown-300'}>
+          <strong>Boda</strong>
         </Title>
-        <Title color={'text-purple-100 pb-5'} >
-          <h2>Maximilian V.</h2>
+        <Title className={'text-6xl lg:text-8xl text-brown-300'} >
+          <strong>Maximilian V.</strong>
         </Title>
-        <Title color={'text-purple-100 pb-5'} >
-          <h2>Carla M.</h2>
+        <Title className={'text-6xl lg:text-8xl text-brown-300'}>
+          <strong>Carla M.</strong>
         </Title>
       </Banner>
       {guest ? <Invitation>
-        <h5 className={'pb-4'}>{guest.gender === 'M' ? 'Querido' : 'Querida'} {guest.name}:</h5>
+        <h5 className={'pb-4 text-center'}>{guest.gender === 'M' ? 'Querido' : 'Querida'} {guest.name}:</h5>
         <div className={'text-center'}>
           <p className={'pb-2'}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet, erat sit amet varius vulputate,
             massa mi venenatis neque, et biNam sagittis nibh nibh, et ultricies nisl tempor id. Curabitur pretium
@@ -65,7 +59,7 @@ export default function Home() {
             hendrerit p</p>
         </div>
       </Invitation> : <h3>Loading...</h3>}
-      <Confirm guest={guest} reloadGuest={loadGuest} setLocalGuest={setGuest}/>
+      <Confirm guest={guest} reloadGuest={mutate} setLocalGuest={mutate}/>
       <FAQ/>
       <FlowerCanvas></FlowerCanvas>
     </main>

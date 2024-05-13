@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import notoSansJP from '@/app/fonts';
+import { notoSansJP } from '@/app/fonts';
 import { Suspense } from 'react';
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={notoSansJP.className}><Suspense>{children}</Suspense></body>
+      <body className={`${notoSansJP.className}`}><Suspense>{children}</Suspense></body>
     </html>
   );
 }

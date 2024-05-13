@@ -27,3 +27,16 @@ export const getGuest = async (guest: Guest) => {
   });
   return res.json();
 };
+
+export const getAllGuest = async () => {
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/guests/findAll`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      accept: 'application/json',
+      'x-api-key': process.env.NEXT_PUBLIC_API_KEY as string
+    },
+  });
+  return res.json();
+};

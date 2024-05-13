@@ -8,7 +8,7 @@ const FlowerCanvas = () => {
   const petalsRef = useRef([] as any[]);
   const [petals, setPetals] = useState([] as any[]);
   const { height, width } = useWindowDimensions();
-  const numberOfPetals = 100;
+  const numberOfPetals = 200;
   //console.log('Flower canvas rerenderd');
   //console.log('Render petals', petals);
 

@@ -1,6 +1,6 @@
-import { Noto_Sans } from 'next/font/google';
+import { Noto_Sans, Dancing_Script } from 'next/font/google';
 
-const notoSansJP = Noto_Sans({
+export const notoSansJP = Noto_Sans({
   style: ['normal', 'italic'],
   weight: ['300', '400', '700'],
   subsets: ['latin'],
@@ -8,4 +8,10 @@ const notoSansJP = Noto_Sans({
   display: 'swap'
 });
 
-export default notoSansJP;
+export const dancingScript = Dancing_Script({
+  style: ['normal'],
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--dancing-script',
+  display: 'swap'
+});

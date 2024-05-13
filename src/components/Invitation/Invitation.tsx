@@ -7,17 +7,17 @@ export type strapiBanner = {
 };
 const Invitation = (props: strapiBanner) => {
   return (
-    <div className={'relative md:flex h-auto md:h-[800px] overflow-hidden'}>
-      <div className={'md:basis-1/2 h-full'}>
+    <div className={'relative lg:flex h-auto lg:h-[800px] overflow-hidden'}>
+      <div className={'lg:basis-1/2 h-full'}>
         <div className={'flex-col h-full py-10 md:py-0'}>
           <div className={'flex flex-row justify-center items-center h-full'}>
-            <div className={'md:w-[80%] mb-5 sm:mb-0 font-noto px-5 md:px-10 z-10'}>
+            <div className={`md:w-[80%] mb-5 sm:mb-0 font-noto px-5 md:px-10 z-10`}>
               {props.children}
             </div>
           </div>
         </div>
       </div>
-      <div className={'md:basis-1/2 h-full'}>
+      <div className={'lg:basis-1/2 h-full'}>
         <div className={'flex-col h-full py-10 md:py-0'}>
           <div className={'flex flex-row justify-center items-center h-full'}>
             <div className={'mb-5 sm:mb-0 z-10'}>

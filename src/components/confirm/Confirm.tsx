@@ -64,7 +64,7 @@ const Confirm = ({ guest, reloadGuest = () => Promise.resolve(), setLocalGuest =
     <div className={'relative grid grid-cols-1 gap-4'}>
       <div className={'basis-full h-full'}>
         <div className={'flex flex-row justify-center items-center h-full'}>
-          <Title><h3>Por favor confirma tu asistencia</h3></Title>
+          <Title><h2 className={'text-brown-300'}>Por favor confirma tu asistencia</h2></Title>
         </div>
       </div>
       <div className={'md:flex h-auto md:h-[400px] overflow-hidden'}>
