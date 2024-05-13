@@ -39,7 +39,6 @@ const FlowerCanvas = () => {
     });
     newPetals.forEach((petal:any, idx: number) => {
       context.globalAlpha = petal.opacity;
-      console.log('Petal', idx, 'opacity', petal.opacity);
       context.drawImage(
         image,
         petal.x,
