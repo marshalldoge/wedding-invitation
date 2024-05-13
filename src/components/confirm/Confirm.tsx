@@ -1,5 +1,6 @@
 'use client';
 import Title from '@/components/common/Title';
+import ConfirmButton from '@/components/buttons/ConfirmButton';
 
 export type strapiBanner = {
 };
@@ -15,14 +16,14 @@ const Confirm = (props: strapiBanner) => {
         <div className={'md:basis-1/2 h-full'}>
           <div className={'flex-col h-full py-10 md:py-0'}>
             <div className={'flex flex-row justify-center items-center h-full'}>
-              <h1>SI</h1>
+              <ConfirmButton text={'SI'} onClick={() => {}}/>
             </div>
           </div>
         </div>
         <div className={'md:basis-1/2 h-full'}>
           <div className={'flex-col h-full py-10 md:py-0'}>
             <div className={'flex flex-row justify-center items-center h-full'}>
-              <h1>NO</h1>
+              <ConfirmButton text={'NO'} onClick={() => {}}/>
             </div>
           </div>
         </div>

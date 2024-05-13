@@ -2,7 +2,7 @@ import { APIGatewayEvent } from 'aws-lambda';
 import { internalCorsServerError, validCorsRequest } from './responses';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import {
-  DynamoDBDocumentClient,
+  DynamoDBDocumentClient, GetCommand,
   PutCommand,
   ScanCommand,
 } from '@aws-sdk/lib-dynamodb';
@@ -18,7 +18,7 @@ export default class GuestHandler {
     this.logger = console;
   }
 
-  async findGuests(input) {
+  async findAllGuests(guest: any) {
     const params = {
       TableName: process.env.GUEST_DYNAMO_DB_TABLE_NAME,
       Select: 'ALL_ATTRIBUTES',
@@ -36,6 +36,19 @@ export default class GuestHandler {
     return scanResults;
   }
 
+  async findGuest(guest: any) {
+    const TableName = process.env.GUEST_DYNAMO_DB_TABLE_NAME;
+    const params = new GetCommand({
+      TableName,
+      Key: {
+        id: guest.id,
+      },
+    });
+    const data = await docClient.send(params);
+    this.logger.info('Retrieved data from guest table', { data });
+    return data.Item || {};
+  }
+
   async createGuest(guest: any) {
     const params = new PutCommand({
       TableName: process.env.GUEST_DYNAMO_DB_TABLE_NAME,
@@ -44,7 +57,7 @@ export default class GuestHandler {
     try {
       return docClient.send(params);
     } catch (error) {
-      this.logger.error('Error in inserting unique device id', { error });
+      this.logger.error('Error in inserting unique guest id', { error });
     }
   }
 
@@ -56,7 +69,7 @@ export default class GuestHandler {
     try {
       return docClient.send(params);
     } catch (error) {
-      this.logger.error('Error in updating unique device id', { error });
+      this.logger.error('Error in updating unique guest id', { error });
     }
   }
 
@@ -65,9 +78,14 @@ export default class GuestHandler {
       this.logger.debug({ message: 'Received event', event: this.event });
       let res = {} as any;
       switch (this.event.path) {
+        case '/guests/findAll': {
+          const body = JSON.parse(this.event.body as string);
+          res = await this.findAllGuests(body);
+          break;
+        }
         case '/guests/find': {
           const body = JSON.parse(this.event.body as string);
-          res = await this.findGuests(body);
+          res = await this.findGuest(body);
           break;
         }
         case '/guests/update': {

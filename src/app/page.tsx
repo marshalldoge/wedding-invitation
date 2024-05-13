@@ -5,6 +5,7 @@ import Invitation from '@/components/Invitation/Invitation';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Confirm from '@/components/confirm/Confirm';
+import { getGuest } from '@/api/guestApi';
 
 interface Guest {
   id: string;
@@ -21,12 +22,8 @@ export default function Home() {
   const searchParams = useSearchParams();
   const [guest, setGuest] = useState(null as unknown as Guest);
   useEffect(() => {
-    Promise.resolve({
-      id: '1',
-      name: 'Carla Mamani',
-      gender: 'F',
-      table: 'fire'
-    }).then((res:any) => {
+    const guestId = searchParams.get('id') as string;
+    getGuest({ id: guestId }).then((res) => {
       setGuest(res);
     });
   }, []);

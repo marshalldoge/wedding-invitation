@@ -7,7 +7,7 @@ const Map = () => (
       defaultZoom={15}
       gestureHandling={'greedy'}
       disableDefaultUI={true}
-      mapId={process.env.NEXT_PUBLIC_MAP_ID as string}
+      mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID as string}
     >
       <AdvancedMarker position={{ lat: -16.55246508695984, lng: -68.0659536163635 }}>
         <img src={'/LeDomeLogo.jpg'} className={'w-[40px] h-[40px]'}/>

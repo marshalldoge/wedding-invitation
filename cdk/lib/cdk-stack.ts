@@ -127,6 +127,10 @@ export class CdkStack extends Stack {
 
     const weddingBackendResource = weddingApiGateway.root.addResource('guests');
     const findGuestsResource = weddingBackendResource.addProxy({
+      defaultCorsPreflightOptions: {
+        allowOrigins: apigateway.Cors.ALL_ORIGINS,
+        allowMethods: apigateway.Cors.ALL_METHODS
+      },
       anyMethod: true,
       defaultIntegration: new apigateway.LambdaIntegration(lambdaFunction),
       defaultMethodOptions: {

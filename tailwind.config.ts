@@ -50,10 +50,19 @@ const config: Config = {
           900: '#7a7a7a',
         },
         pink: {
-          100: '#fee3e8',
+          100: '#FAEAEB',
+          200: '#fee3e8',
+          300: '#FDD1D6',
+          400: '#F8C2C3'
         },
         purple: {
           100: '#552d38'
+        },
+        yellow: {
+          100: '#F8DFC8',
+        },
+        brown: {
+          300: '#70371F'
         }
       },
     },

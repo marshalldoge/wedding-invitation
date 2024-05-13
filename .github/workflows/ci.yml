@@ -43,7 +43,10 @@ jobs:
       - name: "🔧 build application"
         run: npm run build
         env:
-          PANAMA_HOST: https://${{inputs.environment}}.summiko.com/api
+          NEXT_PUBLIC_API_KEY: ${{secrets.AWS_AGW_API_KEY}}
+          NEXT_PUBLIC_GOOGLE_API_KEY: ${{secrets.GOOGLE_API_KEY}}
+          NEXT_PUBLIC_GOOGLE_MAP_ID: ${{secrets.GOOGLE_MAP_ID}}
+          NEXT_PUBLIC_BACKEND_URL: ${{secrets.AWS_AGW_INVOKE_URL}}
 
       - name: "Cdk stack deploy"
         run: |
