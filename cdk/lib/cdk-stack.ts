@@ -125,18 +125,19 @@ export class CdkStack extends Stack {
       principal: new iam.ServicePrincipal('apigateway.amazonaws.com'),
     });
 
-    const weddingBackendResource = weddingApiGateway.root.addResource('guests');
-
     // eslint-disable-next-line max-len
     const ALLOWED_HEADERS = ['Content-Type', 'X-Amz-Date', 'X-Amz-Security-Token', 'Authorization', 'X-Api-Key', 'X-Requested-With', 'Accept', 'Access-Control-Allow-Methods', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'];
-    const findGuestsResource = weddingBackendResource.addProxy({
+    const weddingBackendResource = weddingApiGateway.root.addResource('guests', {
       defaultCorsPreflightOptions: {
         allowOrigins: apigateway.Cors.ALL_ORIGINS,
         allowMethods: apigateway.Cors.ALL_METHODS,
         allowHeaders: ALLOWED_HEADERS,
         allowCredentials: true,
-      },
-      anyMethod: false,
+      }
+    });
+
+    const findGuestsResource = weddingBackendResource.addProxy({
+      anyMethod: true,
       defaultIntegration: new apigateway.LambdaIntegration(lambdaFunction),
       defaultMethodOptions: {
         apiKeyRequired: true,
