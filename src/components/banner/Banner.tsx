@@ -10,8 +10,8 @@ const Banner = (props: strapiBanner) => {
         {props.children}
       </div>
       <div className={'absolute top-[20%] right-[0%] md:bottom-[20%] md:left-[50%] z-10'}>
-        <div className={'bg-pink-200 w-[150px] h-[600px] md:w-[400px] md:h-[600px]'}>
-          <img src={'/sakuraBranch.svg'} alt={'sakura'}/>
+        <div className={'w-[150px] h-[600px] md:w-[400px] md:h-[600px]'}>
+
         </div>
       </div>
     </div>

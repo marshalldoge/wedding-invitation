@@ -69,4 +69,20 @@
     height: 100%;
     width: 100%;
   }
+  html {
+    background-image: url('/sakuraForestBottomLeft.png'), url('/sakuraBranchLeft.png'), linear-gradient(180deg, rgba(199,224,255,1) 0%, rgba(231,214,246,0.9990371148459384) 50%, rgba(242,221,219,1) 100%);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position:
+        bottom left,
+        top right,
+        top;
+    background-size: 100% auto, 80% auto, 100%;
+  }
+  .confirm-button {
+    /* From https://css.glass */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.3px);
+    -webkit-backdrop-filter: blur(6.3px);
+    border: 1px solid rgba(255, 255, 255, 0.30);
+  }
 }

@@ -30,13 +30,13 @@ const Confirm = ({ guest, reloadGuest = () => Promise.resolve(), setLocalGuest =
 
   if(guest) {
     if(guest.locked) {
-      yesBackgroundColor = guest.confirmation  === 'Y' ? 'bg-yellow-100' : 'bg-neutral-400';
-      noBackgroundColor = guest.confirmation === 'N' ? 'bg-yellow-100' : 'bg-neutral-400';
+      yesBackgroundColor = guest.confirmation  === 'Y' ? 'bg-yellow-100 bg-opacity-60' : 'bg-neutral-400 bg-opacity-20';
+      noBackgroundColor = guest.confirmation === 'N' ? 'bg-yellow-100 bg-opacity-60' : 'bg-neutral-400 bg-opacity-20';
       yesBackgroundColor += ' hover:cursor-not-allowed ';
       noBackgroundColor += ' hover:cursor-not-allowed';
     } else {
-      yesBackgroundColor = guest.confirmation  === 'Y' ? 'bg-yellow-100' : 'bg-pink-100';
-      noBackgroundColor = guest.confirmation === 'N' ? 'bg-yellow-100' : 'bg-pink-100';
+      yesBackgroundColor = guest.confirmation  === 'Y' ? 'bg-yellow-100 bg-opacity-70' : 'bg-pink-100 bg-opacity-50';
+      noBackgroundColor = guest.confirmation === 'N' ? 'bg-yellow-100 bg-opacity-70' : 'bg-pink-100 bg-opacity-50';
       yesBackgroundColor += ' hover:cursor-pointer';
       noBackgroundColor += ' hover:cursor-pointer';
     }
