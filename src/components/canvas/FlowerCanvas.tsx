@@ -18,7 +18,6 @@ const FlowerCanvas = () => {
     const context = canvas.getContext('2d');
     // @ts-ignore
     context.clearRect(0, 0, canvas.width, canvas.height);
-    console.log('Animate petals', petalsRef);
     const image = new Image();
     image.src = '/petal.png';
     let newPetals = petalsRef.current.map((petal) => {
@@ -38,8 +37,9 @@ const FlowerCanvas = () => {
         ...newPetal,
       };
     });
-    newPetals.forEach((petal:any) => {
+    newPetals.forEach((petal:any, idx: number) => {
       context.globalAlpha = petal.opacity;
+      console.log('Petal', idx, 'opacity', petal.opacity);
       context.drawImage(
         image,
         petal.x,
