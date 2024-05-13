@@ -7,7 +7,11 @@ import {
   ScanCommand,
 } from '@aws-sdk/lib-dynamodb';
 
-const docClient = DynamoDBDocumentClient.from(new DynamoDBClient({}));
+const docClient = DynamoDBDocumentClient.from(new DynamoDBClient({}), {
+  marshallOptions: {
+    removeUndefinedValues: false,
+  }
+});
 
 export default class GuestHandler {
   event: APIGatewayEvent;

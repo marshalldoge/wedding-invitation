@@ -3,4 +3,5 @@ export interface Guest {
   name?: string;
   table?: string;
   gender?: string;
+  confirmation?: string;
 }

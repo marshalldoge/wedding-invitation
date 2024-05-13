@@ -2,7 +2,7 @@
 import Banner from '@/components/banner/Banner';
 import Title from '@/components/common/Title';
 import Invitation from '@/components/Invitation/Invitation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Confirm from '@/components/confirm/Confirm';
 import { getGuest } from '@/api/guestApi';
@@ -21,11 +21,16 @@ const props = {
 export default function Home() {
   const searchParams = useSearchParams();
   const [guest, setGuest] = useState(null as unknown as Guest);
-  useEffect(() => {
+
+  const loadGuest = useCallback( async (): Promise<void> => {
     const guestId = searchParams.get('id') as string;
     getGuest({ id: guestId }).then((res) => {
       setGuest(res);
     });
+  }, [searchParams.get('id')]);
+
+  useEffect(() => {
+    loadGuest();
   }, []);
   return (
     <main>
@@ -54,7 +59,7 @@ export default function Home() {
           nisi in dui elementum congue vel nec lorem. Aenean ut ipsum vitae metus lobortis semper a cursus erat. Donec
           hendrerit p</p>
       </Invitation> : <h3>Loading...</h3>}
-      <Confirm/>
+      <Confirm guest={guest} reloadGuest={loadGuest}/>
     </main>
   );
 }
