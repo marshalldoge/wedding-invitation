@@ -57,7 +57,7 @@ const GuestTable = (props: GuestListsProps) => {
           </thead>
           <tbody>
           {props.guests.map((guest) => {
-            const backgroundColor = guest.confirmation === 'PENDING' ? 'bg-yellow-100' : guest.confirmation === 'Y' ? 'bg-green-100' : 'bg-red-100';
+            const backgroundColor = guest.confirmation === 'PENDING' ? 'bg-neutral-100' : guest.confirmation === 'Y' ? 'bg-green-100' : 'bg-red-100';
             return (
               <tr key={guest.id} className={`${backgroundColor} border-b dark:border-gray-700`}>
                 <td className="px-6 py-4">
