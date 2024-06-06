@@ -10,7 +10,7 @@ const FAQ = () => {
       <div className={'relative px-5 md:px-10 z-30'}>
         <Accordion className={'bg-neutral-100'}>
           <Accordion.Panel className={'bg-neutral-100'}>
-            <Accordion.Title className={'bg-neutral-100'}>¿Cómo llego al local?</Accordion.Title>
+            <Accordion.Title className={'bg-neutral-100 text-h4'}>¿Cómo llego al local?</Accordion.Title>
             <Accordion.Content className={'bg-neutral-100'}>
               <p className="mb-2 text-gray-500 dark:text-gray-400">
                 Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons,

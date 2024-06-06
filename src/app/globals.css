@@ -15,12 +15,12 @@
     }
   }
   h2 {
-    font-size: 4rem;
+    font-size: 1.4rem;
     font-weight: 600;
     line-height: 40px;
     letter-spacing: 0em;
     @media screen(sm) {
-      font-size: 2rem;
+      font-size: 1.3rem;
       font-weight: 600;
       line-height: 40px;
       letter-spacing: 0;
