@@ -8,7 +8,7 @@ import { getGuest } from '@/api/guestApi';
 import FAQ from '@/components/faq/FAQ';
 import FlowerCanvas from '@/components/canvas/FlowerCanvas';
 import useSWR from 'swr';
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 const GlitchyText = dynamic(
   () => import('@/components/animated/GlitchyText'),
   { ssr: false }
@@ -35,18 +35,15 @@ export default function Home() {
 
   return (
     <main className={'relative'}>
-      <Banner>
-        <Title className={'text-6xl lg:text-9xl text-brown-300 tracking-wider'}>
-          <strong>Boda</strong>
+      <Banner title={'Boda'}>
+        <Title className={'text-4xl md:text-5xl tracking-[0.5rem] vertical-text text-center'} >
+          <GlitchyText text={'Maximilian'} speed={'fast'}/>
         </Title>
-        <Title className={'text-6xl lg:text-8xl text-brown-300'} >
-          <GlitchyText text={'Maximilian V.'} speed={'fast'}/>
+        <Title className={'text-6xl lg:text-6xl vertical-text text-center'} >
+          <GlitchyText text={'&'} speed={'slow'} type={'kanji'}/>
         </Title>
-        <Title className={'text-6xl lg:text-8xl text-brown-300'} >
-          <GlitchyText text={'&'} speed={'slow'}/>
-        </Title>
-        <Title className={'text-6xl lg:text-8xl text-brown-300'}>
-          <GlitchyText text={'Carla M.'}/>
+        <Title className={'text-4xl md:text-5xl tracking-[1rem] vertical-text text-center'}>
+          <GlitchyText text={'Carla'}/>
         </Title>
       </Banner>
       {guest ? <Invitation>

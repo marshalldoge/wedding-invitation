@@ -1,4 +1,4 @@
-import { Noto_Sans, Dancing_Script } from 'next/font/google';
+import {Noto_Sans, Dancing_Script, Lora} from 'next/font/google';
 
 export const notoSansJP = Noto_Sans({
   style: ['normal', 'italic'],
@@ -13,5 +13,13 @@ export const dancingScript = Dancing_Script({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--dancing-script',
+  display: 'swap'
+});
+
+export const lora = Lora({
+  style: ['normal'],
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--lora',
   display: 'swap'
 });

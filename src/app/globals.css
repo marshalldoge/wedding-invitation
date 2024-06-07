@@ -76,7 +76,7 @@
         bottom left,
         top right,
         top;
-    background-size: 100% auto, 80% auto, 100%;
+    background-size: 100% auto, 60% auto, 100%;
   }
   .confirm-button {
     /* From https://css.glass */
@@ -104,8 +104,8 @@
   .glitchy-slow [data-scroll=in] .char:after {
     --txt: attr(data-char);
     content: var(--txt);
-    animation-duration: 2s;
-    animation-name: glitchy;
+    animation-duration: 3s;
+    animation-name: glitchy-5;
     animation-fill-mode: backwards;
     animation-iteration-count: calc(1 + var(--char-index));
     animation-delay: 0.1s;
@@ -133,6 +133,7 @@
     inset: 0;
     color: #70371F;
     visibility: visible;
+    letter-spacing: 50px;
   }
 
   .glitchy-fast .char {
@@ -153,13 +154,27 @@
     inset: 0;
     color: #70371F;
     visibility: visible;
+    letter-spacing: 500px;
   }
 
   @keyframes glitchy {
-    0%   { content: var(--char-0); }
-    25%  { content: var(--char-1); }
-    50%  { content: var(--char-2); }
-    75%  { content: var(--char-3); }
-    100% { content: var(--char-0); }
+    0%   { content: var(--char-0); letter-spacing: 100px; }
+    33%  { content: var(--char-1); letter-spacing: 80px;}
+    66%  { content: var(--char-2); letter-spacing: 20px;}
+    100% { content: var(--char-0); letter-spacing: 10px;}
+  }
+
+  @keyframes glitchy-5 {
+    0%   { content: var(--char-0); letter-spacing: 100px; }
+    20%  { content: var(--char-1); letter-spacing: 80px;}
+    40%  { content: var(--char-2); letter-spacing: 20px;}
+    60%  { content: var(--char-3); letter-spacing: 20px;}
+    80%  { content: var(--char-4); letter-spacing: 20px;}
+    100% { content: var(--char-0); letter-spacing: 10px;}
+  }
+
+  .vertical-text {
+    text-orientation: upright;
+    writing-mode: vertical-lr;
   }
 }

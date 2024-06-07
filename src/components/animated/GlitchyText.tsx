@@ -8,17 +8,24 @@ interface props {
   text: string;
   className?: string;
   speed?: 'normal' | 'fast' | 'slow';
+  type?: 'kana' | 'kanji';
+  poolSize?: number;
 }
-const GlitchyText = ({ text = '', className = 'text-black', speed = 'normal' }: props) => {
+
+const characterMap = {
+  kana: 'ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゙゚゛゜ゝゞゟァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶヷヸヹヺ・ーヽヾヿ',
+  kanji: '愛美夢生命光和力平和自由希望'
+};
+
+const GlitchyText = ({ text = '', className = 'text-black', speed = 'normal', type = 'kana', poolSize = 3 }: props) => {
   useEffect(() => {
     Splitting();
     ScrollOut({});
-    const allKana = 'ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖ゙゚゛゜ゝゞゟァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶヷヸヹヺ・ーヽヾヿ';
-    const GLITCH_CHARS = (allKana+'愛美夢生命光和力平和自由希望').split('');
+    const GLITCH_CHARS = (characterMap[type]).split('');
     const CHARS = document.querySelectorAll(`.glitchy-${speed} .char`);
     for (let c = 0; c < CHARS.length; c++) {
       // We are going to inline 10 CSS variables
-      for (let g = 0; g < 10; g++) {
+      for (let g = 0; g < poolSize + 10; g++) {
         // @ts-ignore
         CHARS[c].style.setProperty(
           `--char-${g}`,
