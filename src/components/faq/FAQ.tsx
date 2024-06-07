@@ -3,7 +3,7 @@ import Title from '@/components/common/Title';
 
 const FAQ = () => {
   return (
-    <div className={'py-16'}>
+    <div className={'py-16 md:h-[40rem]'}>
       <div className={'flex justify-center items-center py-5'}>
         <Title><h2 className={'text-brown-300'}>Preguntas frecuentes</h2></Title>
       </div>

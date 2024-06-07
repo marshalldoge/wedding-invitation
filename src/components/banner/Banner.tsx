@@ -8,7 +8,7 @@ export type strapiBanner = {
 };
 const Banner = (props: strapiBanner) => {
   return (
-    <div className={`relative flex flex-row justify-center items-center h-[100vh] overflow-hidden ${lora.className}`}>
+    <div className={`relative flex flex-row justify-center items-center h-[100vh] ${lora.className}`}>
       <div className={'flex flex-col justify-center w-auto grid-cols-3 lg:basis-1/2'}>
         <Title className={'text-6xl lg:text-7xl text-brown-300 tracking-wider text-center'}>
           {props.title}
