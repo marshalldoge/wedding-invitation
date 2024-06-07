@@ -104,7 +104,7 @@
   .glitchy-slow [data-scroll=in] .char:after {
     --txt: attr(data-char);
     content: var(--txt);
-    animation-duration: 1.3s;
+    animation-duration: 2s;
     animation-name: glitchy;
     animation-fill-mode: backwards;
     animation-iteration-count: calc(1 + var(--char-index));
@@ -124,7 +124,7 @@
   .glitchy-normal [data-scroll=in] .char:after {
     --txt: attr(data-char);
     content: var(--txt);
-    animation-duration: 0.2s;
+    animation-duration: 0.5s;
     animation-name: glitchy;
     animation-fill-mode: backwards;
     animation-iteration-count: calc(1 + var(--char-index));
@@ -144,7 +144,7 @@
   .glitchy-fast [data-scroll=in] .char:after {
     --txt: attr(data-char);
     content: var(--txt);
-    animation-duration: 0.1s;
+    animation-duration: 0.3s;
     animation-name: glitchy;
     animation-fill-mode: backwards;
     animation-iteration-count: calc(1 + var(--char-index));
@@ -157,15 +157,9 @@
 
   @keyframes glitchy {
     0%   { content: var(--char-0); }
-    10%  { content: var(--char-1); }
-    20%  { content: var(--char-2); }
-    30%  { content: var(--char-3); }
-    40%  { content: var(--char-4); }
-    50%  { content: var(--char-5); }
-    60%  { content: var(--char-6); }
-    70%  { content: var(--char-7); }
-    80%  { content: var(--char-8); }
-    90%  { content: var(--char-9); }
+    25%  { content: var(--char-1); }
+    50%  { content: var(--char-2); }
+    75%  { content: var(--char-3); }
     100% { content: var(--char-0); }
   }
 }

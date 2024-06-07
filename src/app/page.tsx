@@ -8,7 +8,11 @@ import { getGuest } from '@/api/guestApi';
 import FAQ from '@/components/faq/FAQ';
 import FlowerCanvas from '@/components/canvas/FlowerCanvas';
 import useSWR from 'swr';
-import GlitchyText from '@/components/animated/GlitchyText';
+import dynamic from "next/dynamic";
+const GlitchyText = dynamic(
+  () => import('@/components/animated/GlitchyText'),
+  { ssr: false }
+);
 
 interface Guest {
   id: string;
@@ -32,7 +36,7 @@ export default function Home() {
   return (
     <main className={'relative'}>
       <Banner>
-        <Title className={'text-6xl lg:text-9xl text-brown-300'}>
+        <Title className={'text-6xl lg:text-9xl text-brown-300 tracking-wider'}>
           <strong>Boda</strong>
         </Title>
         <Title className={'text-6xl lg:text-8xl text-brown-300'} >

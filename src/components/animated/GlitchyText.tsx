@@ -1,3 +1,4 @@
+'use client';
 import { useEffect } from 'react';
 import Splitting from 'splitting';
 // @ts-ignore
