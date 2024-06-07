@@ -1,4 +1,4 @@
-import {Noto_Sans, Dancing_Script, Lora} from 'next/font/google';
+import { Noto_Sans, Dancing_Script, Lora } from 'next/font/google';
 
 export const notoSansJP = Noto_Sans({
   style: ['normal', 'italic'],
