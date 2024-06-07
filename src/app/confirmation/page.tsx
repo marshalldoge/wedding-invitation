@@ -36,10 +36,10 @@ const ConfirmationListPage = () => {
   return (
     <div className={'h-[100vh]'}>
       <Title>
-        <h1 className={'text-center text-brown-300 pt-10'}>Lista de invitados</h1>
+        <h2 className={'text-center text-brown-300 pt-10'}>Lista de invitados</h2>
       </Title>
       <div className={'mx-5 md:mx-10 py-10'}>
-        {isLoading ? <h1 className={'text-brown-300 text-center'}>Loading...</h1>:<GuestTable guests={data} onUpdatedLockedUser={onUpdateLocked} isValidating={isValidating}/>}
+        {isLoading ? <h3 className={'text-brown-300 text-center'}>Loading...</h3>:<GuestTable guests={data} onUpdatedLockedUser={onUpdateLocked} isValidating={isValidating}/>}
       </div>
     </div>
   );

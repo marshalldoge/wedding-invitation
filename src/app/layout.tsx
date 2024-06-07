@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import 'splitting/dist/splitting.css';
+import 'splitting/dist/splitting-cells.css';
 import { notoSansJP } from '@/app/fonts';
 import { Suspense } from 'react';
 

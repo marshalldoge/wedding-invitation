@@ -87,8 +87,8 @@ const Confirm = ({ guest, reloadGuest = () => Promise.resolve(), setLocalGuest =
           </div>
         </div>
       </div>
-      <div className={'absolute bottom-[0%] right-[0%] z-10'}>
-        <img src={'/sakuraBranch.svg'} alt={'sakura'} className={'w-[400px] h-[300px]'}/>
+      <div className={'absolute bottom-[0%] left-[-10%] z-10'}>
+        <img src={'/sakuraBranch2Left.png'} alt={'sakura'} className={'w-[400px] h-[300px]'}/>
       </div>
     </div>
   );

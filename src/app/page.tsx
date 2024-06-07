@@ -8,6 +8,7 @@ import { getGuest } from '@/api/guestApi';
 import FAQ from '@/components/faq/FAQ';
 import FlowerCanvas from '@/components/canvas/FlowerCanvas';
 import useSWR from 'swr';
+import GlitchyText from '@/components/animated/GlitchyText';
 
 interface Guest {
   id: string;
@@ -35,10 +36,13 @@ export default function Home() {
           <strong>Boda</strong>
         </Title>
         <Title className={'text-6xl lg:text-8xl text-brown-300'} >
-          <strong>Maximilian V.</strong>
+          <GlitchyText text={'Maximilian V.'} speed={'fast'}/>
+        </Title>
+        <Title className={'text-6xl lg:text-8xl text-brown-300'} >
+          <GlitchyText text={'&'} speed={'slow'}/>
         </Title>
         <Title className={'text-6xl lg:text-8xl text-brown-300'}>
-          <strong>Carla M.</strong>
+          <GlitchyText text={'Carla M.'}/>
         </Title>
       </Banner>
       {guest ? <Invitation>
