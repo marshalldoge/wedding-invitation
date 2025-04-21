@@ -9,6 +9,7 @@ import FAQ from '@/components/faq/FAQ';
 import FlowerCanvas from '@/components/canvas/FlowerCanvas';
 import useSWR from 'swr';
 import dynamic from 'next/dynamic';
+import Map from '@/components/map/Map';
 const GlitchyText = dynamic(
   () => import('@/components/animated/GlitchyText'),
   { ssr: false }
@@ -46,6 +47,7 @@ export default function Home() {
           <GlitchyText text={'Carla'}/>
         </Title>
       </Banner>
+      <Map/>
       {guest ? <Invitation>
         <h5 className={'pb-4 text-center'}>{guest.gender === 'M' ? 'Querido' : 'Querida'} {guest.name}:</h5>
         <div className={'text-center'}>
